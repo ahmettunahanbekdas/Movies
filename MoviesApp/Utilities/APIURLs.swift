@@ -8,7 +8,7 @@
 import Foundation
 
 enum APIURLs {
-    static func movie() -> String {
-        return "https://api.themoviedb.org/3/movie/popular?api_key=e0c4d4f140763a5ced128836116cff61"
+    static func movie(page: Int) -> String {
+        return "https://api.themoviedb.org/3/movie/popular?api_key=e0c4d4f140763a5ced128836116cff61&language=en-US&page=\(page)"
     }
 }

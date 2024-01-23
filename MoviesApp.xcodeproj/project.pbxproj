@@ -16,6 +16,7 @@
 		0EEDAEB12B5FA348000271C5 /* Movie.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EEDAEB02B5FA348000271C5 /* Movie.swift */; };
 		0EEDAEB32B5FACD7000271C5 /* MovieService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EEDAEB22B5FACD7000271C5 /* MovieService.swift */; };
 		0EEDAEB52B5FBF17000271C5 /* APIURLs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EEDAEB42B5FBF17000271C5 /* APIURLs.swift */; };
+		0EEDAEB72B5FD3D4000271C5 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EEDAEB62B5FD3D4000271C5 /* HomeViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +31,7 @@
 		0EEDAEB02B5FA348000271C5 /* Movie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Movie.swift; sourceTree = "<group>"; };
 		0EEDAEB22B5FACD7000271C5 /* MovieService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieService.swift; sourceTree = "<group>"; };
 		0EEDAEB42B5FBF17000271C5 /* APIURLs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIURLs.swift; sourceTree = "<group>"; };
+		0EEDAEB62B5FD3D4000271C5 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -120,6 +122,7 @@
 			isa = PBXGroup;
 			children = (
 				0E6BD2422B5E8C19008274D2 /* HomeScreen.swift */,
+				0EEDAEB62B5FD3D4000271C5 /* HomeViewModel.swift */,
 			);
 			path = "HomeScreen ";
 			sourceTree = "<group>";
@@ -197,6 +200,7 @@
 				0E6BD2452B5E8CE3008274D2 /* NetworkManager.swift in Sources */,
 				0E6BD2432B5E8C19008274D2 /* HomeScreen.swift in Sources */,
 				0E32C9822B5E741000E18967 /* AppDelegate.swift in Sources */,
+				0EEDAEB72B5FD3D4000271C5 /* HomeViewModel.swift in Sources */,
 				0E32C9842B5E741000E18967 /* SceneDelegate.swift in Sources */,
 				0EEDAEB52B5FBF17000271C5 /* APIURLs.swift in Sources */,
 				0EEDAEB32B5FACD7000271C5 /* MovieService.swift in Sources */,

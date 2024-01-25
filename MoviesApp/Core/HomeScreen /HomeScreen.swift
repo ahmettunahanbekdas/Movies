@@ -35,13 +35,14 @@ extension HomeScreen: HomeScreenInterface {
     //MARK: - configureCollectionVC()
     func configureCollectionVC() {
         
-        collectionView = UICollectionView(frame: .zero, collectionViewLayout: UIHelper.CreateHomeFlowLayout())
-        view.addSubview(collectionView)
-        collectionView.pinToEdgesOf(view: view)
-        collectionView.translatesAutoresizingMaskIntoConstraints = false // Önemli
-
         collectionView.dataSource = self
         collectionView.delegate = self
+        
+        collectionView = UICollectionView(frame: .zero, collectionViewLayout: UIHelper.CreateHomeFlowLayout())
+        view.addSubview(collectionView)
+        
+        collectionView.pinToEdgesOf(view: view)
+        collectionView.translatesAutoresizingMaskIntoConstraints = false // Önemli
 
         collectionView.register(MovieCell.self, forCellWithReuseIdentifier: MovieCell.reuseID)
     }
@@ -50,7 +51,7 @@ extension HomeScreen: HomeScreenInterface {
 extension HomeScreen: UICollectionViewDelegate, UICollectionViewDataSource { //Bunlarda bir protokol içersinde ki metodalara ulaşıyoruz
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 10
+        return viewModel.movies.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {

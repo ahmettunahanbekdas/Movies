@@ -6,34 +6,33 @@
 //
 
 import Foundation
-
+//MARK: - protocol HomeViewModelInterface
 protocol HomeViewModelInterface {
     var view: HomeScreenInterface? {get set}
     
     func viewDidLoad()
     func getMovies()
 }
-
+//MARK: - final class HomeViewModel
 final class HomeViewModel {
     weak var view: HomeScreenInterface?  //Protokolde yazdığımızı extensionsta yazmama sebebimiz oraya yazılmaması
     private let service = MovieService() //Protokolün içersine tüm değişkenler yazılmaz çoğunukla fonksiyonaların tamamı olur
     var movies: [MovieResult] = [] //Bu array de filmleri toplayacağız
 }
-
+//MARK: - extension HomeViewModel
 extension HomeViewModel: HomeViewModelInterface {
     func viewDidLoad() {
         view?.configureVC()
         view?.configureCollectionVC()
         getMovies()
     }
-    
+    //MARK: - func getMovies()
     func getMovies() {
         service.downloadMovies { [weak self] returnedMovies in
             guard let self = self else {
                 print("Weak self is nil")
                 return
             }
-
             guard let returnedMovie = returnedMovies else {
                 print("Returned movies is nil")
                 return

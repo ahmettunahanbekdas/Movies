@@ -17,8 +17,6 @@ enum UIHelper {
         layout.scrollDirection = .vertical //Scroll yönü
         layout.itemSize = CGSize(width: dWith, height: dWith * 1.5)
         layout.minimumLineSpacing = 30 //Aralarına boşluk verme
-      //  layout.sectionInset = UIEdgeInsets(top: 0, left: 100, bottom: 0, right: 100) // Sağdan ve soldan boşluk ekleme
-
         
         return layout
     }

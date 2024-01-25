@@ -36,10 +36,12 @@
 
 import Foundation
 
+//MARK: - class NetworkManager
 class NetworkManager {
     static let shared = NetworkManager() //1
     private init() {} //2
 
+    //MARK: -  func download()
     func download(url: URL, completion:@escaping (Result<Data,Error>) -> ()) { //3 //9
          URLSession.shared.dataTask(with: url) { data, response, error in //4
             if let error = error { //5
@@ -53,16 +55,13 @@ class NetworkManager {
                 completion(.failure(URLError(.badServerResponse)))//11
                 return
             }
-            
             guard //8
                 let data = data else {
                 completion(.failure(URLError(.badURL)))//12
                 return }
             completion(.success(data))
-            
         } .resume()
     }
-    
 }
 
 

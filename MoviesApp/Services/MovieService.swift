@@ -7,32 +7,34 @@
 
 import Foundation
 
-class MovieServices {
+final class MovieService {
     
-    func downloadMovie(completion: @escaping ([MovieResult]?) -> ()){
-        guard let url = URL(string: APIURLs.movie(page: 1)) else { return }
+    func downloadMovies(completion: @escaping ([MovieResult]?) -> ()){
+        guard let url = URL(string: APIURLs.movie(page:1)) else { return print("1") }
         
         NetworkManager.shared.download(url: url) { [weak self] result in
-            guard let self = self else { return }
+            guard let self = self else {return  print("1")}
             
             switch result {
             case .success(let data):
-                completion(self.handleWithData(data))
+                completion(self.handleWithData(data)) // BURASI ÇALIŞTI
             case .failure(let error):
                 self.handleWithError(error)
             }
         }
     }
+    
     private func handleWithError(_ error: Error){
         print(error.localizedDescription)
     }
     
     private func handleWithData(_ data: Data) -> [MovieResult]?{
         do{
-            let movie = try JSONDecoder().decode(Movie.self, from: data)
-            return movie.result
+            let movie = try JSONDecoder().decode(Movie.self, from: data) // BURASI DA OKEY
+            return movie.results
         }catch let error{
             print(error)
+            
             return nil
         }
     }

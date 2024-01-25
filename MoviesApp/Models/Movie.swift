@@ -6,10 +6,11 @@
 //
 
 // Optional olarak tanımlıyorum çünkü jsondan nil gelebilir en azından proje patladan yürüsün
+
 import Foundation
 
-struct Movie: Decodable{
-    let result: [MovieResult]?
+struct Movie: Decodable {
+    let results: [MovieResult]?
 }
 
 struct MovieResult: Decodable {
@@ -17,7 +18,7 @@ struct MovieResult: Decodable {
     let posterPath: String?
     
     enum CodingKeys: String, CodingKey {
-        case id 
+        case id
         case posterPath = "poster_path"
     }
 }

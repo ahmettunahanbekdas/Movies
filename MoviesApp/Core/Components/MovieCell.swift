@@ -10,9 +10,12 @@ import UIKit
 class MovieCell: UICollectionViewCell {
     static let reuseID = "MovieCell"
     
+    private var posterImageView: PosterImageView!
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         cofigureMovieCell()
+        configurePosterImageView()
     }
     
     required init?(coder: NSCoder) {
@@ -21,6 +24,16 @@ class MovieCell: UICollectionViewCell {
     
      private func cofigureMovieCell() {
         backgroundColor = .systemGray6
-         layer.cornerRadius = CGFloat.dWith/7
+         layer.cornerRadius = CGFloat.dWith/10
+         clipsToBounds = true
+    }
+    
+    private func configurePosterImageView(){
+        posterImageView = PosterImageView(frame:.zero)
+        addSubview(posterImageView)
+        backgroundColor = .red
+        
+        posterImageView.pinToEdgesOf(view: self)
+        
     }
 }

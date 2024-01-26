@@ -22,6 +22,12 @@ class MovieCell: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
+    // PosterImageViewde downloadImage() metodu ile indirdiğimiz resimleri set edeceğiz ve HomeScreen de bu resimleri kullanacağız 
+    func setCell(movie: MovieResult) {
+        posterImageView.downloadImage(movie: movie)
+        
+    }
+    
      private func cofigureMovieCell() {
         backgroundColor = .systemGray6
          layer.cornerRadius = CGFloat.dWith/10
@@ -31,7 +37,6 @@ class MovieCell: UICollectionViewCell {
     private func configurePosterImageView(){
         posterImageView = PosterImageView(frame:.zero)
         addSubview(posterImageView)
-        backgroundColor = .red
         
         posterImageView.pinToEdgesOf(view: self)
         

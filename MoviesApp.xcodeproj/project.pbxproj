@@ -80,10 +80,10 @@
 				0E6BD23B2B5E8B4A008274D2 /* Models */,
 				0EB3CAC32B610B20000AD39D /* Extensions */,
 				0E32C98C2B5E741100E18967 /* LaunchScreen.storyboard */,
-				0E32C9812B5E741000E18967 /* AppDelegate.swift */,
-				0E32C9832B5E741000E18967 /* SceneDelegate.swift */,
 				0E32C98F2B5E741100E18967 /* Info.plist */,
 				0E32C98A2B5E741100E18967 /* Assets.xcassets */,
+				0E32C9812B5E741000E18967 /* AppDelegate.swift */,
+				0E32C9832B5E741000E18967 /* SceneDelegate.swift */,
 			);
 			path = MoviesApp;
 			sourceTree = "<group>";

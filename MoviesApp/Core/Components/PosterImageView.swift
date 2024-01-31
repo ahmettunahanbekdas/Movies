@@ -24,12 +24,19 @@ final class PosterImageView: UIImageView {
     func downloadImage(movie: MovieResult){
         guard let url = URL(string: APIURLs.images(posterPath: movie._posterPath)) else {return}
         
-       dataTask = URLSession.shared.dataTask(with: url) { data, _, _ in
-            guard let data = data else {return}
-            DispatchQueue.main.async {
-                self.image = UIImage(data: data)
-            }
-       }
+       dataTask = NetworkManager.shared.download(url: url) { [weak self] result in
+           guard let self = self else { return }
+           switch result {
+           case .success(let data): //Değişken tanımlar let kullanmak zorunda değiliz örnek olarak arrays üzerinde işlem yapabilmek için var olarak tanımlamalıyız
+               DispatchQueue.main.async {
+                   self.image = UIImage(data: data)
+               }
+           case .failure(let error):
+               DispatchQueue.main.async {
+                   print(error.localizedDescription)
+               }
+           }
+        }
         dataTask?.resume()
     }
     

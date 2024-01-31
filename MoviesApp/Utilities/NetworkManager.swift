@@ -13,9 +13,10 @@ final class NetworkManager {
     // Singleton deseni: Sınıfın dışından yeni örneklerin oluşturulmasını engelleyen private init metodu.
     private init() {}
     // Verilen URL'den veri indiren bir fonksiyon.
-    func download(url: URL, completion: @escaping(Result<Data,Error>) -> ()) {
+    @discardableResult
+    func download(url: URL, completion: @escaping(Result<Data,Error>) -> ()) -> URLSessionDataTask {
         // URLSession.shared.dataTask, belirtilen URL'den veri indirme işlemini başlatır.
-        URLSession.shared.dataTask(with: url) { data, response, error in //4
+        let dataTask = URLSession.shared.dataTask(with: url) { data, response, error in //4
             // Hata kontrolü: Eğer bir hata varsa, hatayı yazdır ve completion handler'ı çağırarak hata durumunu bildir.
             if let error = error {
                 print(error.localizedDescription)
@@ -39,7 +40,9 @@ final class NetworkManager {
             }
             // Başarılı durumda, completion handler'ı çağırarak indirilen veriyi bildirir.
             completion(.success(data))
-        } .resume() // URLSession.dataTask fonksiyonu başlatılır.
+        }
+            dataTask.resume() // URLSession.dataTask fonksiyonu başlatılır.
+        return dataTask
     }
 }
 

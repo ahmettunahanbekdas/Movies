@@ -9,11 +9,10 @@ import Foundation
 
 protocol HomeViewModelInterface {
     var view: HomeScreenInterface? {get set}
-    
     func viewDidLoad()
     func getMovies()
 }
-
+                                                                    
 final class HomeViewModel {
     weak var view: HomeScreenInterface?  //Protokolde yazdığımızı extensionsta yazmama sebebimiz oraya yazılmaması
     private let service = MovieService() //Protokolün içersine tüm değişkenler yazılmaz çoğunukla fonksiyonaların tamamı olur
@@ -24,7 +23,7 @@ extension HomeViewModel: HomeViewModelInterface {
     func viewDidLoad() {
         view?.configureVC()
         view?.configureCollectionVC()
-        getMovies()
+        getMovies()        
     }
     
     func getMovies() {
@@ -33,7 +32,6 @@ extension HomeViewModel: HomeViewModelInterface {
                 print("Weak self is nil")
                 return
             }
-
             guard let returnedMovie = returnedMovies else {
                 print("Returned movies is nil")
                 return

@@ -7,10 +7,10 @@
 
 import UIKit
 
-class MovieCell: UICollectionViewCell {
+final class MovieCell: UICollectionViewCell {
     static let reuseID = "MovieCell"
     
-    private var posterImageView: PosterImageView!
+    private var  posterImageView: PosterImageView!
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -21,17 +21,21 @@ class MovieCell: UICollectionViewCell {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    override func prepareForReuse() {
+        print("Reusable called cell!!")
+        posterImageView.image = nil
+        posterImageView.cancelDownload()
+    }
     
-    // PosterImageViewde downloadImage() metodu ile indirdiğimiz resimleri set edeceğiz ve HomeScreen de bu resimleri kullanacağız 
     func setCell(movie: MovieResult) {
         posterImageView.downloadImage(movie: movie)
         
     }
     
-     private func cofigureMovieCell() {
+    private func cofigureMovieCell() {
         backgroundColor = .systemGray6
-         layer.cornerRadius = CGFloat.dWith/10
-         clipsToBounds = true
+        layer.cornerRadius = CGFloat.dWith/10
+        clipsToBounds = true
     }
     
     private func configurePosterImageView(){

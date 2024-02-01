@@ -22,7 +22,6 @@ final class MovieCell: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     override func prepareForReuse() {
-        print("Reusable called cell!!")
         posterImageView.image = nil
         posterImageView.cancelDownload()
     }

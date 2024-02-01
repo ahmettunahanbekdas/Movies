@@ -9,9 +9,9 @@ import Foundation
 
 final class MovieService {
     // API'den filmleri indirmek için kullanılan fonksiyon
-    func downloadMovies(completion: @escaping([MovieResult]?) -> ()) {
+    func downloadMovies(page: Int, completion: @escaping([MovieResult]?) -> ()) {
         // APIURLs.movie fonksiyonu ile bir URL oluşturulur
-        guard let url = URL(string: APIURLs.movie(page: 1)) else {
+        guard let url = URL(string: APIURLs.movie(page: page)) else {
             return print("APIurl Error")
         }
         // NetworkManager üzerinden asenkron bir ağ isteği yapılır

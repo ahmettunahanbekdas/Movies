@@ -8,73 +8,89 @@
 import UIKit
 
 //MARK: - protocol HomeScreenInterface
-// HomeScreen sınıfının uygulayacağı protokol. Bu protokol, belirli davranışları sağlamak üzere tanımlanmış metotları içerir.
 protocol HomeScreenInterface: AnyObject {
     func configureVC()
     func configureCollectionVC()
+    func reloadData()
 }
 
 //MARK: - class HomeScreen
-// HomeScreen sınıfı, UIViewController sınıfından türetilmiştir.
 class HomeScreen: UIViewController {
-    // HomeViewModel sınıfından bir örnek oluşturulur.
     private let viewModel = HomeViewModel()
-    // UICollectionView nesnesini saklamak için bir özellik.
     private var collectionView: UICollectionView!
     
-    // UIViewController'ın yaşam döngüsü olaylarından biri olan viewDidLoad, viewController yüklendiğinde çağrılır.
     override func viewDidLoad() {
         super.viewDidLoad()
-        // ViewModel'in view özelliği, HomeScreen'e atanır.
         viewModel.view = self
-        // CollectionView'un yapılandırılması ve ViewModel'in viewDidLoad fonksiyonunun çağrılması.
         configureCollectionVC()
         viewModel.viewDidLoad()
     }
 }
 
 //MARK: - extension HomeScreen
-// HomeScreen sınıfına ek özellikler eklemek için kullanılan bir extension. HomeScreenInterface protokolünü uygular.
 extension HomeScreen: HomeScreenInterface {
     //MARK: - configureVC
-    // UIViewController'ın görünümünün yapılandırılması için kullanılır.
     func configureVC() {
         view.backgroundColor = .systemBackground
     }
     //MARK: - configureCollectionVC()
-    // UICollectionView'nun yapılandırılması için kullanılır.
     func configureCollectionVC() {
-        // UICollectionView örneği oluşturulur ve görünüme eklenir.
         collectionView = UICollectionView(frame: .zero, collectionViewLayout: UIHelper.CreateHomeFlowLayout())
         view.addSubview(collectionView)
         collectionView.pinToEdgesOf(view: view)
         collectionView.translatesAutoresizingMaskIntoConstraints = false // Önemli
-
-        // UICollectionView'nun veri kaynağı ve delegesi olarak HomeScreen sınıfı atanır.
+        
         collectionView.dataSource = self
         collectionView.delegate = self
-
-        // MovieCell sınıfının kullanılacağı belirtilir.
+        
         collectionView.register(MovieCell.self, forCellWithReuseIdentifier: MovieCell.reuseID)
+    }
+    func reloadData() {
+        collectionView.reloadCollectionView()
     }
 }
 
+
 //MARK: - UICollectionViewDelegate and UICollectionViewDataSource
-// UICollectionView'nun delegesi ve veri kaynağı için kullanılan bir extension.
 extension HomeScreen: UICollectionViewDelegate, UICollectionViewDataSource {
-    // UICollectionViewDelegate metotları implemente edilir.
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        // Film sayısı
         return viewModel.movies.count
     }
-    
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        // Belirli bir hücreyi oluşturan ve döndüren metot
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MovieCell.reuseID, for: indexPath) as? MovieCell else {
             return UICollectionViewCell()
         }
-        // Hücrenin içeriği ayarlanır
         cell.setCell(movie: viewModel.movies[indexPath.item])
         return cell
     }
+ 
+    //MARK: - scrollViewDidEndDecelerating
+    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+        let offSetY = scrollView.contentOffset.y //Scroll değerimiz
+        let contentHeight = scrollView.contentSize.height //Tüm scroll uzunluğu
+        let height = collectionView.frame.height // CollectionView uzunluğu
+        
+        guard  contentHeight != 0 else {return}
+        if offSetY >= contentHeight - (2 * height) {
+            viewModel.getMovies()
+            print("Get")
+        }
+    }
+    
+    
+    // //MARK: - scrollViewDidScroll
+    // // Bu şekilde sadece scroll edip durunca func çalışıyor scrollViewDidScroll da ise 85 doldurduktan sonra en ufak  scroll //kaydırmasında get çalıştırıyor (yukarıda ekstra koşul ile yaptığımız scrollViewDidScroll örneği de bulunmakta)
+    // func scrollViewDidScroll(_ scrollView: UIScrollView) {
+    //     let offSetY = scrollView.contentOffset.y //Scroll değerimiz
+    //     let contentHeight = scrollView.contentSize.height //Tüm scroll uzunluğu
+    //     let height = collectionView.frame.height // CollectionView uzunluğu
+    //
+    //     guard  contentHeight != 0 && viewModel.shouldDownload else {return} // ilk başta conten uzunluğu sıfır geldiği için koşul //sağlanıyor ve 2 kere get edilmesini //önlemek için bu koşulu kullandık
+    //     if offSetY >= contentHeight - (2 * height) {
+    //         viewModel.getMovies()
+    //     }
+    // }
 }
+
+
+

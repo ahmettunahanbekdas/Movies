@@ -11,6 +11,7 @@
 		0E32C9842B5E741000E18967 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E32C9832B5E741000E18967 /* SceneDelegate.swift */; };
 		0E32C98B2B5E741100E18967 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0E32C98A2B5E741100E18967 /* Assets.xcassets */; };
 		0E32C98E2B5E741100E18967 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0E32C98C2B5E741100E18967 /* LaunchScreen.storyboard */; };
+		0E3F000C2B6A9CD900DD14CB /* CollectionView+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E3F000B2B6A9CD900DD14CB /* CollectionView+Ext.swift */; };
 		0E6BD2432B5E8C19008274D2 /* HomeScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E6BD2422B5E8C19008274D2 /* HomeScreen.swift */; };
 		0E6BD2452B5E8CE3008274D2 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E6BD2442B5E8CE3008274D2 /* NetworkManager.swift */; };
 		0EB3CAC52B610B53000AD39D /* UIView+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EB3CAC42B610B53000AD39D /* UIView+Ext.swift */; };
@@ -31,6 +32,7 @@
 		0E32C98A2B5E741100E18967 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0E32C98D2B5E741100E18967 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		0E32C98F2B5E741100E18967 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		0E3F000B2B6A9CD900DD14CB /* CollectionView+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CollectionView+Ext.swift"; sourceTree = "<group>"; };
 		0E6BD2422B5E8C19008274D2 /* HomeScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreen.swift; sourceTree = "<group>"; };
 		0E6BD2442B5E8CE3008274D2 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		0EB3CAC42B610B53000AD39D /* UIView+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Ext.swift"; sourceTree = "<group>"; };
@@ -146,6 +148,7 @@
 			children = (
 				0EB3CAC42B610B53000AD39D /* UIView+Ext.swift */,
 				0EB3CAC82B61172C000AD39D /* CGFloat+Ext.swift */,
+				0E3F000B2B6A9CD900DD14CB /* CollectionView+Ext.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -224,6 +227,7 @@
 				0E6BD2432B5E8C19008274D2 /* HomeScreen.swift in Sources */,
 				0EB3CACB2B612ADE000AD39D /* MovieCell.swift in Sources */,
 				0E32C9822B5E741000E18967 /* AppDelegate.swift in Sources */,
+				0E3F000C2B6A9CD900DD14CB /* CollectionView+Ext.swift in Sources */,
 				0EB3CAC92B61172C000AD39D /* CGFloat+Ext.swift in Sources */,
 				0EB3CAC72B611532000AD39D /* UIHelper.swift in Sources */,
 				0EEDAEB72B5FD3D4000271C5 /* HomeViewModel.swift in Sources */,

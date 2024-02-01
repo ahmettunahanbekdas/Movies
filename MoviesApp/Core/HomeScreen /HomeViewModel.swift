@@ -12,22 +12,25 @@ protocol HomeViewModelInterface {
     func viewDidLoad()
     func getMovies()
 }
-                                                                    
+
 final class HomeViewModel {
     weak var view: HomeScreenInterface?  //Protokolde yazdığımızı extensionsta yazmama sebebimiz oraya yazılmaması
     private let service = MovieService() //Protokolün içersine tüm değişkenler yazılmaz çoğunukla fonksiyonaların tamamı olur
     var movies: [MovieResult] = [] //Bu array de filmleri toplayacağız
+    private var page = 1
+    //  var shouldDownload = true
 }
 
 extension HomeViewModel: HomeViewModelInterface {
     func viewDidLoad() {
         view?.configureVC()
         view?.configureCollectionVC()
-        getMovies()        
+        getMovies()
     }
     
     func getMovies() {
-        service.downloadMovies { [weak self] returnedMovies in
+        // shouldDownload = false
+        service.downloadMovies(page: page) { [weak self] returnedMovies in
             guard let self = self else {
                 print("Weak self is nil")
                 return
@@ -36,8 +39,11 @@ extension HomeViewModel: HomeViewModelInterface {
                 print("Returned movies is nil")
                 return
             }
-            self.movies = returnedMovie
-            print(returnedMovie)
+            self.movies.append(contentsOf: returnedMovie)
+            print(self.page)
+            self.page += 1
+            self.view?.reloadData()
+            //self.shouldDownload = true
         }
     }
 }

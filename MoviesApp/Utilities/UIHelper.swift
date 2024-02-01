@@ -22,7 +22,7 @@ enum UIHelper {
         // Hücreler arasındaki minimum satır aralığını belirliyoruz.
         layout.minimumLineSpacing = 30
         // Bölme içindeki içerik ile bölme arasındaki kenar boşluklarını belirliyoruz.
-        layout.sectionInset = UIEdgeInsets(top: 0, left: 100, bottom: 0, right: 100)
+        // layout.sectionInset = UIEdgeInsets(top: 0, left: 100, bottom: 0, right: 100) // !!!!!!! Saçma bir hata geliyor karşıma anlayamdım 
         
         // Oluşturulan layout'u geri döndürüyoruz.
         return layout

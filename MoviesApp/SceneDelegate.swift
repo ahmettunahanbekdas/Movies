@@ -24,7 +24,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         window?.windowScene = windowScene
 
         // Pencerenin ana görünüm denetleyicisini (ViewController) belirle.
-        window?.rootViewController = HomeScreen()
+        window?.rootViewController = UINavigationController(rootViewController: HomeScreen())
 
         // Pencereyi görünür hale getir.
         window?.makeKeyAndVisible()

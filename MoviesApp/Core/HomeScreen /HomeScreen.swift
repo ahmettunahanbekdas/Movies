@@ -12,6 +12,7 @@ protocol HomeScreenInterface: AnyObject {
     func configureVC()
     func configureCollectionVC()
     func reloadData()
+    func navigatonToDetailScreen()
 }
 
 //MARK: - class HomeScreen
@@ -32,6 +33,9 @@ extension HomeScreen: HomeScreenInterface {
     //MARK: - configureVC
     func configureVC() {
         view.backgroundColor = .systemBackground
+        //   title = "MOVİE APP 💋"
+        //   navigationController?.navigationBar.prefersLargeTitles = true
+        
     }
     //MARK: - configureCollectionVC()
     func configureCollectionVC() {
@@ -45,11 +49,19 @@ extension HomeScreen: HomeScreenInterface {
         
         collectionView.register(MovieCell.self, forCellWithReuseIdentifier: MovieCell.reuseID)
     }
+    
+    func navigatonToDetailScreen() {
+        DispatchQueue.main.async {
+            let detailScreen = DetailScreen()
+            self.navigationController?.pushViewController(detailScreen, animated: true)
+        }
+        
+    }
+    
     func reloadData() {
         collectionView.reloadCollectionView()
     }
 }
-
 
 //MARK: - UICollectionViewDelegate and UICollectionViewDataSource
 extension HomeScreen: UICollectionViewDelegate, UICollectionViewDataSource {
@@ -63,7 +75,7 @@ extension HomeScreen: UICollectionViewDelegate, UICollectionViewDataSource {
         cell.setCell(movie: viewModel.movies[indexPath.item])
         return cell
     }
- 
+    
     //MARK: - scrollViewDidEndDecelerating
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
         let offSetY = scrollView.contentOffset.y //Scroll değerimiz

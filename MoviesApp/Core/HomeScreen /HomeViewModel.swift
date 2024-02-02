@@ -46,6 +46,20 @@ extension HomeViewModel: HomeViewModelInterface {
             //self.shouldDownload = true
         }
     }
+    
+    func getDetail(id: Int) {
+        service.downloadDetail(id: id) { [weak self] returnedDetails in
+            guard let _ = self else {
+                print("getDetailMovie Self Error")
+                return
+            }
+            guard let returnedDetails = returnedDetails else {
+                print("getDetailMovie Error")
+                return
+            }
+            print(returnedDetails)
+        }
+    }
 }
 
 

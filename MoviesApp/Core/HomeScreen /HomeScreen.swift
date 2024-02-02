@@ -77,20 +77,39 @@ extension HomeScreen: UICollectionViewDelegate, UICollectionViewDataSource {
         }
     }
     
-    
-    // //MARK: - scrollViewDidScroll
-    // // Bu şekilde sadece scroll edip durunca func çalışıyor scrollViewDidScroll da ise 85 doldurduktan sonra en ufak  scroll //kaydırmasında get çalıştırıyor (yukarıda ekstra koşul ile yaptığımız scrollViewDidScroll örneği de bulunmakta)
-    // func scrollViewDidScroll(_ scrollView: UIScrollView) {
-    //     let offSetY = scrollView.contentOffset.y //Scroll değerimiz
-    //     let contentHeight = scrollView.contentSize.height //Tüm scroll uzunluğu
-    //     let height = collectionView.frame.height // CollectionView uzunluğu
-    //
-    //     guard  contentHeight != 0 && viewModel.shouldDownload else {return} // ilk başta conten uzunluğu sıfır geldiği için koşul //sağlanıyor ve 2 kere get edilmesini //önlemek için bu koşulu kullandık
-    //     if offSetY >= contentHeight - (2 * height) {
-    //         viewModel.getMovies()
-    //     }
-    // }
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        viewModel.getDetail(id: viewModel.movies[indexPath.item]._id)
+    }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// //MARK: - scrollViewDidScroll
+// // Bu şekilde sadece scroll edip durunca func çalışıyor scrollViewDidScroll da ise 85 doldurduktan sonra en ufak  scroll //kaydırmasında get çalıştırıyor (yukarıda ekstra koşul ile yaptığımız scrollViewDidScroll örneği de bulunmakta)
+// func scrollViewDidScroll(_ scrollView: UIScrollView) {
+//     let offSetY = scrollView.contentOffset.y //Scroll değerimiz
+//     let contentHeight = scrollView.contentSize.height //Tüm scroll uzunluğu
+//     let height = collectionView.frame.height // CollectionView uzunluğu
+//
+//     guard  contentHeight != 0 && viewModel.shouldDownload else {return} // ilk başta conten uzunluğu sıfır geldiği için koşul //sağlanıyor ve 2 kere get edilmesini //önlemek için bu koşulu kullandık
+//     if offSetY >= contentHeight - (2 * height) {
+//         viewModel.getMovies()
+//     }
+// }
 
 
 

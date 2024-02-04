@@ -7,29 +7,31 @@
 
 import Foundation
 
+//MARK:  - protocol HomeViewModelInterface -
 protocol HomeViewModelInterface {
     var view: HomeScreenInterface? {get set}
     func viewDidLoad()
     func getMovies()
 }
 
+//MARK: - class HomeViewModel  -
 final class HomeViewModel {
     weak var view: HomeScreenInterface?  //Protokolde yazdığımızı extensionsta yazmama sebebimiz oraya yazılmaması
     private let service = MovieService() //Protokolün içersine tüm değişkenler yazılmaz çoğunukla fonksiyonaların tamamı olur
     var movies: [MovieResult] = [] //Bu array de filmleri toplayacağız
     private var page = 1
-    //  var shouldDownload = true
+    //var shouldDownload = true
 }
 
+// MARK: - extensions HomeViewModel: HomeViewModelInterface -
 extension HomeViewModel: HomeViewModelInterface {
     func viewDidLoad() {
         view?.configureVC()
         view?.configureCollectionVC()
         getMovies()
     }
-    
     func getMovies() {
-        // shouldDownload = false
+        //shouldDownload = false
         service.downloadMovies(page: page) { [weak self] returnedMovies in
             guard let self = self else {
                 print("Weak self is nil")
@@ -46,7 +48,6 @@ extension HomeViewModel: HomeViewModelInterface {
             //self.shouldDownload = true
         }
     }
-    
     func getDetail(id: Int) {
         service.downloadDetail(id: id) { [weak self] returnedDetails in
             guard let self = self else {
@@ -57,14 +58,7 @@ extension HomeViewModel: HomeViewModelInterface {
                 print("getDetailMovie Error")
                 return
             }
-            self.view?.navigatonToDetailScreen()
-            print(returnedDetails)
+            self.view?.navigatonToDetailScreen(movie: returnedDetails)
         }
     }
 }
-
-
-
-
-
-

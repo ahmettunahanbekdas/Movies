@@ -7,6 +7,7 @@
 
 import UIKit
 
+
 extension UICollectionView {
     func reloadCollectionView(){
         DispatchQueue.main.async {

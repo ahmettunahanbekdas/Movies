@@ -31,7 +31,14 @@ struct MovieResult: Decodable {
     var _id: Int {
         id ?? Int.min
     }
+    
+    var _title: String {
+        title ?? ""
+    }
     var _posterPath: String {
         posterPath ?? ""
+    }
+    var _overview: String {
+        overview ?? ""
     }
 }

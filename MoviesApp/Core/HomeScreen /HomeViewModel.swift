@@ -30,6 +30,7 @@ extension HomeViewModel: HomeViewModelInterface {
         view?.configureCollectionVC()
         getMovies()
     }
+    // test
     func getMovies() {
         //shouldDownload = false
         service.downloadMovies(page: page) { [weak self] returnedMovies in

@@ -24,7 +24,7 @@ struct MovieResult: Decodable {
         case id
         case posterPath = "poster_path"
         case overview
-        case releaseDate = "releaseDate"
+        case releaseDate = "release_date"  
         case title
     }
     
@@ -39,6 +39,9 @@ struct MovieResult: Decodable {
         posterPath ?? ""
     }
     var _overview: String {
-        overview ?? ""
+        overview ?? "N/A"
+    }
+    var _releaseDate: String {
+        releaseDate ?? "N/A"
     }
 }

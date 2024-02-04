@@ -19,7 +19,6 @@ final class PosterImageView: UIImageView {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
     // Burada resimleri indireceğiz buradan MovieCell de set edeceğiz
     func downloadImage(movie: MovieResult){
         guard let url = URL(string: APIURLs.images(posterPath: movie._posterPath)) else {return}
@@ -39,7 +38,6 @@ final class PosterImageView: UIImageView {
         }
         dataTask?.resume()
     }
-    
     func cancelDownload() {
         dataTask?.cancel()
         dataTask = nil

@@ -18,8 +18,11 @@ final class DetailViewModel {
 
 extension DetailViewModel: DetailViewModelInterface {
     func viewDidLoad() {
-        view?.test()
+        view?.configureVC() //Bu işlemi yapmazsak kasıyor nedenini bilmiyorum
         view?.configurePosterImageView()
-
+        view?.downloadPosterImageView()
+        view?.configureTitleLabel()
+        view?.configureDateLabel()
+        view?.configureOverviewLabel()
     }
 }

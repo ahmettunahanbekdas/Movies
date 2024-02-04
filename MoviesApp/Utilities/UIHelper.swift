@@ -15,6 +15,7 @@ enum UIHelper {
         let layout = UICollectionViewFlowLayout()
         // Ekran genişliği bilgisini CGFloat extension ile alıyoruz.
         let dWith = CGFloat.dWith
+
         // Layout'un yatay kaydırma yönlü olacağını belirtiyoruz.
         layout.scrollDirection = .vertical
         // Her bir hücrenin boyutunu ve genişliğini belirliyoruz.

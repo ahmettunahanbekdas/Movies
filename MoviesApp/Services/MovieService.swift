@@ -7,38 +7,65 @@
 
 import Foundation
 
-//MARK: - final class MovieService
 final class MovieService {
-    //MARK: -  func downloadMovies()
-    func downloadMovies(completion: @escaping ([MovieResult]?) -> ()){
-        guard let url = URL(string: APIURLs.movie(page:1)) else { return print("1") }
-        
-        //MARK: - download
+    // API'den filmleri indirmek için kullanılan fonksiyon
+    func downloadMovies(page: Int, completion: @escaping([MovieResult]?) -> ()) {
+        // APIURLs.movie fonksiyonu ile bir URL oluşturulur
+        guard let url = URL(string: APIURLs.movie(page: page)) else {
+            return print("Movies APIurl Error")
+        }
+        // NetworkManager üzerinden asenkron bir ağ isteği yapılır
         NetworkManager.shared.download(url: url) { [weak self] result in
-            guard let self = self else {return  print("1")}
-            
+            // Güçlü referans döngüsünü önlemek için [weak self] kullanılır
+            guard let self = self else { return }
+            // NetworkManager'dan gelen sonucu değerlendirir
             switch result {
             case .success(let data):
+                // Başarılı durumda, gelen veriyi işleyerek completion handler'a iletilir
+                completion(self.handleWithData(data))
+            case .failure(let error):
+                // Hata durumunda, hatayı işleyen fonksiyon çağrılır
+                self.handleWithError(error)
+            }
+        }
+    }
+    
+    func downloadDetail(id: Int, completion: @escaping (MovieResult?) -> ()) {
+        guard let url = URL(string: APIURLs.details(id: id)) else {
+            return print("MoviesDetail APIurl Error")
+        }
+        NetworkManager.shared.download(url: url) { [weak self] result in
+            guard let self = self else {return}
+            switch result {
+            case.success(let data):
                 completion(self.handleWithData(data))
             case .failure(let error):
                 self.handleWithError(error)
             }
         }
     }
-    //MARK: - func handleWithError()
-    private func handleWithError(_ error: Error){
+    
+    private func handleWithError(_ error: Error) {
         print(error.localizedDescription)
     }
-    //MARK: - func handleWithData()
-    private func handleWithData(_ data: Data) -> [MovieResult]?{
-        do{
+    private func handleWithData(_ data: Data) -> [MovieResult]? {
+        do {
             let movie = try JSONDecoder().decode(Movie.self, from: data)
             return movie.results
-        }catch let error{
+        } catch let error {
             print(error)
-            
             return nil
         }
     }
     
+    private func handleWithData(_ data: Data) -> (MovieResult)? {
+        do {
+            let movieDetail = try JSONDecoder().decode(MovieResult.self, from: data)
+            return movieDetail
+        } catch let error {
+            print(error)
+            return nil
+        }
+    }
 }
+

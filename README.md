@@ -36,4 +36,9 @@ We employed the MVVM Binding concept to facilitate communication between the vie
 
 The actions taken in this project serve as a valuable resource to understand fundamental concepts of Swift and MVVM architecture. After reviewing the project, you can find more information in the code files and documentation.
 
+# Screen Recording
+https://github.com/ahmettunahanbekdas/Movies/assets/97003033/03582ed4-a774-4074-9464-00c7305a4241
+
+
+
  

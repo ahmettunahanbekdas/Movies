@@ -13,15 +13,15 @@ protocol DetailViewModelInterface {
 }
 
 final class DetailViewModel {
-    weak var view: DetailScreenInterface? //Bağlantı
+    weak var view: DetailScreenInterface? //Bağlantı 
 }
 
 extension DetailViewModel: DetailViewModelInterface {
     func viewDidLoad() {
-        view?.configureVC() //Bu işlemi yapmazsak kasıyor nedenini bilmiyorum
+        view?.configureVC()
         view?.configurePosterImageView()
-        view?.downloadPosterImageView()
         view?.configureTitleLabel()
+        view?.downloadPosterImageView()
         view?.configureDateLabel()
         view?.configureOverviewLabel()
     }

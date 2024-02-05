@@ -16,16 +16,12 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         // Sağlanan sahne bir UIWindowScene'e dönüştürülebilirse devam et, aksi halde çık.
         guard let windowScene = (scene as? UIWindowScene) else { return }
-
         // Yeni bir pencere (window) oluştur ve boyutunu sahnenin sınırları içinde ayarla.
         window = UIWindow(frame: windowScene.coordinateSpace.bounds)
-
         // Pencerenin sahnesini belirle.
         window?.windowScene = windowScene
-
         // Pencerenin ana görünüm denetleyicisini (ViewController) belirle.
         window?.rootViewController = UINavigationController(rootViewController: HomeScreen())
-
         // Pencereyi görünür hale getir.
         window?.makeKeyAndVisible()
     }

@@ -42,6 +42,7 @@ extension HomeScreen: HomeScreenInterface {
         collectionView.delegate = self
         
         collectionView.register(MovieCell.self, forCellWithReuseIdentifier: MovieCell.reuseID)
+        
     }
     
     func navigatonToDetailScreen(movie: MovieResult) {
@@ -75,7 +76,6 @@ extension HomeScreen: UICollectionViewDelegate, UICollectionViewDataSource {
         guard  contentHeight != 0 else {return}
         if offSetY >= contentHeight - (2 * height) {
             viewModel.getMovies()
-            print("Get")
         }
     }
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {

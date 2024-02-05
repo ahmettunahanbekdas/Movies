@@ -5,7 +5,6 @@
 //  Created by Ahmet Tunahan Bekdaş on 23.01.2024.
 //
 
-// Optional olarak tanımlıyorum çünkü jsondan nil gelebilir en azından proje patlamadan yürüsün
 
 import Foundation
 
@@ -27,11 +26,10 @@ struct MovieResult: Decodable {
         case releaseDate = "release_date"  
         case title
     }
-    
+
     var _id: Int {
         id ?? Int.min
     }
-    
     var _title: String {
         title ?? ""
     }

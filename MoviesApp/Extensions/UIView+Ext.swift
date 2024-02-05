@@ -5,8 +5,7 @@
 //  Created by Ahmet Tunahan Bekdaş on 24.01.2024.
 //
 
-// import Foundation
-import UIKit // UIKit'i import ettiysek Foundation'a gerek yoktur çünkü UIKit içersinde vardır
+import UIKit
 
 extension UIView {
     func pinToEdgesOf(view: UIView) {

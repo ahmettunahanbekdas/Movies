@@ -36,7 +36,6 @@ final class PosterImageView: UIImageView {
                }
            }
         }
-        dataTask?.resume()
     }
     func cancelDownload() {
         dataTask?.cancel()

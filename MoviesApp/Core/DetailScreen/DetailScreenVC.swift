@@ -14,8 +14,6 @@ protocol DetailScreenInterface: AnyObject {
     func configureTitleLabel()
     func configureDateLabel()
     func configureOverviewLabel()
-    
-    
 }
 
 final class DetailScreen: UIViewController{
@@ -30,7 +28,14 @@ final class DetailScreen: UIViewController{
     init(movie: MovieResult) {
         self.movie = movie
         super.init(nibName: nil, bundle: nil)
+        print("Detail Screen Init")
+        
     }
+    
+    deinit {
+        print("Detail Screen Deinit")
+    }
+    
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
@@ -38,7 +43,6 @@ final class DetailScreen: UIViewController{
         super.viewDidLoad()
         viewModel.view = self //Bağlantı
         viewModel.viewDidLoad()
-        print(movie._id)
     }
 }
 
@@ -50,8 +54,8 @@ extension DetailScreen: DetailScreenInterface {
         titleLabel.text = movie._title
         titleLabel.font = UIFont(name: "Impact", size: 30)
         titleLabel.numberOfLines = 2
-
-
+        
+        
         NSLayoutConstraint.activate([
             titleLabel.topAnchor.constraint(equalTo: posterImageView.bottomAnchor, constant: 30),
             titleLabel.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 30),
@@ -79,17 +83,16 @@ extension DetailScreen: DetailScreenInterface {
         overviewLabel.translatesAutoresizingMaskIntoConstraints = false
         overviewLabel.numberOfLines = 0
         NSLayoutConstraint.activate([
-           // overviewLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             overviewLabel.topAnchor.constraint(equalTo: dateLabel.bottomAnchor, constant: padding),
             overviewLabel.leadingAnchor.constraint(equalTo: dateLabel.leadingAnchor, constant: 0),
             overviewLabel.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -20)
         ])
-       
+        
     }
     
-    func configureVC() {
-        view.backgroundColor = .systemBackground
-    }
+   func configureVC() {
+       view.backgroundColor = .systemBackground
+   }
     
     func configurePosterImageView() {
         posterImageView = PosterImageView(frame: .zero)

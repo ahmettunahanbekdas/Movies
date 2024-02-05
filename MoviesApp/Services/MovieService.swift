@@ -8,23 +8,16 @@
 import Foundation
 
 final class MovieService {
-    // API'den filmleri indirmek için kullanılan fonksiyon
     func downloadMovies(page: Int, completion: @escaping([MovieResult]?) -> ()) {
-        // APIURLs.movie fonksiyonu ile bir URL oluşturulur
         guard let url = URL(string: APIURLs.movie(page: page)) else {
             return print("Movies APIurl Error")
         }
-        // NetworkManager üzerinden asenkron bir ağ isteği yapılır
         NetworkManager.shared.download(url: url) { [weak self] result in
-            // Güçlü referans döngüsünü önlemek için [weak self] kullanılır
             guard let self = self else { return }
-            // NetworkManager'dan gelen sonucu değerlendirir
             switch result {
             case .success(let data):
-                // Başarılı durumda, gelen veriyi işleyerek completion handler'a iletilir
                 completion(self.handleWithData(data))
             case .failure(let error):
-                // Hata durumunda, hatayı işleyen fonksiyon çağrılır
                 self.handleWithError(error)
             }
         }
@@ -44,7 +37,7 @@ final class MovieService {
             }
         }
     }
-    
+ //
     private func handleWithError(_ error: Error) {
         print(error.localizedDescription)
     }

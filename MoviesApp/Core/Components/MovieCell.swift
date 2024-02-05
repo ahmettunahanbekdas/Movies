@@ -12,13 +12,11 @@ final class MovieCell: UICollectionViewCell {
     
     private var  posterImageView: PosterImageView!
     private var movie: MovieResult!
-   // private var cellTitle = UILabel() Ana ekranda başlıları ekleme işlemi
     
     override init(frame: CGRect) {
         super.init(frame: frame)
         configureMovieCell()
         configurePosterImageView()
-      //configureCellTitle() Ana ekranda başlıları ekleme işlemi
     }
     
     required init?(coder: NSCoder) {
@@ -28,14 +26,11 @@ final class MovieCell: UICollectionViewCell {
     override func prepareForReuse() {
         posterImageView.image = nil
         posterImageView.cancelDownload()
-       // cellTitle.text = nil
     }
     
     func setCell(movie: MovieResult) {
         self.movie = movie
         posterImageView.downloadImage(movie: movie)
-       // cellTitle.text = movie._title
-        print(movie._title)
     }
     
     private func configureMovieCell() {
@@ -49,6 +44,25 @@ final class MovieCell: UICollectionViewCell {
         addSubview(posterImageView)
         posterImageView.pinToEdgesOf(view: self)
     }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     
     //MARK: - Ana ekranda başlıları ekleme işlemi -
     /*

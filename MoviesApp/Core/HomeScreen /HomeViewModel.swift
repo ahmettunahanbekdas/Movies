@@ -10,6 +10,7 @@ import Foundation
 //MARK:  - protocol HomeViewModelInterface -
 protocol HomeViewModelInterface {
     var view: HomeScreenInterface? {get set}
+    
     func viewDidLoad()
     func getMovies()
 }
@@ -17,8 +18,8 @@ protocol HomeViewModelInterface {
 //MARK: - class HomeViewModel  -
 final class HomeViewModel {
     weak var view: HomeScreenInterface?  //Protokolde yazdığımızı extensionsta yazmama sebebimiz oraya yazılmaması
-    private let service = MovieService() //Protokolün içersine tüm değişkenler yazılmaz çoğunukla fonksiyonaların tamamı olur
-    var movies: [MovieResult] = [] //Bu array de filmleri toplayacağız
+    private let service = MovieService()
+    var movies: [MovieResult] = []
     private var page = 1
     //var shouldDownload = true
 }
@@ -43,7 +44,6 @@ extension HomeViewModel: HomeViewModelInterface {
                 return
             }
             self.movies.append(contentsOf: returnedMovie)
-            print(self.page)
             self.page += 1
             self.view?.reloadData()
             //self.shouldDownload = true

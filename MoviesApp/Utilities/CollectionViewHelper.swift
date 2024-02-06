@@ -7,7 +7,7 @@
 
 import UIKit
 
-enum UIHelper {
+enum CollectionViewHelper {
     static func CreateHomeFlowLayout() -> UICollectionViewFlowLayout {
         let layout = UICollectionViewFlowLayout()
         let dWith = CGFloat.dWith

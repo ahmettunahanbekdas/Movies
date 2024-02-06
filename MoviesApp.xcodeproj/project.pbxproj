@@ -17,7 +17,7 @@
 		0E6BD2432B5E8C19008274D2 /* HomeScreenVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E6BD2422B5E8C19008274D2 /* HomeScreenVC.swift */; };
 		0E6BD2452B5E8CE3008274D2 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E6BD2442B5E8CE3008274D2 /* NetworkManager.swift */; };
 		0EB3CAC52B610B53000AD39D /* UIView+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EB3CAC42B610B53000AD39D /* UIView+Ext.swift */; };
-		0EB3CAC72B611532000AD39D /* UIHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EB3CAC62B611532000AD39D /* UIHelper.swift */; };
+		0EB3CAC72B611532000AD39D /* CollectionViewHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EB3CAC62B611532000AD39D /* CollectionViewHelper.swift */; };
 		0EB3CAC92B61172C000AD39D /* CGFloat+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EB3CAC82B61172C000AD39D /* CGFloat+Ext.swift */; };
 		0EB3CACB2B612ADE000AD39D /* MovieCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EB3CACA2B612ADE000AD39D /* MovieCell.swift */; };
 		0EBAB0FF2B629952004230DC /* PosterImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EBAB0FE2B629952004230DC /* PosterImageView.swift */; };
@@ -42,7 +42,7 @@
 		0E6BD2422B5E8C19008274D2 /* HomeScreenVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreenVC.swift; sourceTree = "<group>"; };
 		0E6BD2442B5E8CE3008274D2 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		0EB3CAC42B610B53000AD39D /* UIView+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Ext.swift"; sourceTree = "<group>"; };
-		0EB3CAC62B611532000AD39D /* UIHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIHelper.swift; sourceTree = "<group>"; };
+		0EB3CAC62B611532000AD39D /* CollectionViewHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewHelper.swift; sourceTree = "<group>"; };
 		0EB3CAC82B61172C000AD39D /* CGFloat+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGFloat+Ext.swift"; sourceTree = "<group>"; };
 		0EB3CACA2B612ADE000AD39D /* MovieCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieCell.swift; sourceTree = "<group>"; };
 		0EBAB0FE2B629952004230DC /* PosterImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PosterImageView.swift; sourceTree = "<group>"; };
@@ -84,18 +84,26 @@
 		0E32C9802B5E741000E18967 /* MoviesApp */ = {
 			isa = PBXGroup;
 			children = (
+				0E69E55A2B723A2D001F5833 /* HelperFiles */,
 				0E6BD23A2B5E8958008274D2 /* Utilities */,
 				0E6BD23C2B5E8B53008274D2 /* Services */,
 				0E6BD23B2B5E8B4A008274D2 /* Models */,
 				0EB3CAC32B610B20000AD39D /* Extensions */,
 				0E6BD23D2B5E8B64008274D2 /* Core */,
-				0E32C98C2B5E741100E18967 /* LaunchScreen.storyboard */,
 				0E32C98F2B5E741100E18967 /* Info.plist */,
+			);
+			path = MoviesApp;
+			sourceTree = "<group>";
+		};
+		0E69E55A2B723A2D001F5833 /* HelperFiles */ = {
+			isa = PBXGroup;
+			children = (
+				0E32C98C2B5E741100E18967 /* LaunchScreen.storyboard */,
 				0E32C98A2B5E741100E18967 /* Assets.xcassets */,
 				0E32C9812B5E741000E18967 /* AppDelegate.swift */,
 				0E32C9832B5E741000E18967 /* SceneDelegate.swift */,
 			);
-			path = MoviesApp;
+			path = HelperFiles;
 			sourceTree = "<group>";
 		};
 		0E6BD23A2B5E8958008274D2 /* Utilities */ = {
@@ -103,7 +111,7 @@
 			children = (
 				0E6BD2442B5E8CE3008274D2 /* NetworkManager.swift */,
 				0EEDAEB42B5FBF17000271C5 /* APIURLs.swift */,
-				0EB3CAC62B611532000AD39D /* UIHelper.swift */,
+				0EB3CAC62B611532000AD39D /* CollectionViewHelper.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -250,7 +258,7 @@
 				0E3F000C2B6A9CD900DD14CB /* CollectionView+Ext.swift in Sources */,
 				0EBAB3FB2B6CEAD40029F5AB /* DetailScreenVC.swift in Sources */,
 				0EB3CAC92B61172C000AD39D /* CGFloat+Ext.swift in Sources */,
-				0EB3CAC72B611532000AD39D /* UIHelper.swift in Sources */,
+				0EB3CAC72B611532000AD39D /* CollectionViewHelper.swift in Sources */,
 				0EEDAEB72B5FD3D4000271C5 /* HomeViewModel.swift in Sources */,
 				0E32C9842B5E741000E18967 /* SceneDelegate.swift in Sources */,
 				0E4089452B6FAD0900972E68 /* UILabel+Ext.swift in Sources */,

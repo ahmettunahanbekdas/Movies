@@ -33,7 +33,7 @@ extension HomeScreen: HomeScreenInterface {
         view.backgroundColor = .systemBackground
     }
     func configureCollectionVC() {
-        collectionView = UICollectionView(frame: .zero, collectionViewLayout: UIHelper.CreateHomeFlowLayout())
+        collectionView = UICollectionView(frame: .zero, collectionViewLayout: CollectionViewHelper.CreateHomeFlowLayout())
         view.addSubview(collectionView)
         collectionView.pinToEdgesOf(view: view)
         collectionView.translatesAutoresizingMaskIntoConstraints = false // Önemli

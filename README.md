@@ -1,7 +1,5 @@
 # Movies
 
-## Movie App with MVVM Architecture
-
 This project is created to develop a simple movie application using the MVVM (Model-View-ViewModel) architecture. Here are the main processes we implemented in this project:
 
 ### Folder Structure

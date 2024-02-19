@@ -10,7 +10,6 @@ import Foundation
 //MARK:  - protocol HomeViewModelInterface -
 protocol HomeViewModelInterface {
     var view: HomeScreenInterface? {get set}
-    
     func viewDidLoad()
     func getMovies()
 }
@@ -31,7 +30,7 @@ extension HomeViewModel: HomeViewModelInterface {
         view?.configureCollectionVC()
         getMovies()
     }
-    // test
+    
     func getMovies() {
         //shouldDownload = false
         service.downloadMovies(page: page) { [weak self] returnedMovies in

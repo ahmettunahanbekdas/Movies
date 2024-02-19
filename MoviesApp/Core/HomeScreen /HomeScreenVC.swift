@@ -16,7 +16,7 @@ protocol HomeScreenInterface: AnyObject {
 }
 
 // MARK: - class HomeScreen -
-class HomeScreen: UIViewController {
+final class HomeScreen: UIViewController {
     private let viewModel = HomeViewModel()
     private var collectionView: UICollectionView!
     

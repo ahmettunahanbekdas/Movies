@@ -1,38 +1,64 @@
-# Movies
+# Movies App
 
-This project is created to develop a simple movie application using the MVVM (Model-View-ViewModel) architecture. Here are the main processes we implemented in this project:
+The **Movies App** is a simple yet effective movie application designed using the **MVVM (Model-View-ViewModel)** architecture. This project showcases key principles of Swift development, including network management, programmatic UI, and effective communication patterns.
+
+---
+
+## Features and Implementation
 
 ### Folder Structure
-In order to organize the code and facilitate maintenance, we created the following folder structure:
+To ensure maintainability and better organization, the following folder structure was implemented:
+- **Models**: Contains struct models responsible for transforming JSON data into Swift structs.
+- **Networking**: Includes a generic network manager and service layer, utilizing the `Result` type for better error handling and response management.
+- **Views**: Houses custom cells and reusable views.
+- **ViewModels**: Contains view model classes that facilitate communication between the view and other layers.
+- **Extensions**: Includes reusable extension functions for enhanced functionality.
 
-- **Models:** Struct models responsible for the transformation from JSON to Struct.
-- **Networking:** Generic network manager and service layer operating with the Result type.
-- **Views:** Folder containing custom cells and views.
-- **ViewModels:** View model classes that communicate with the view.
-- **Extensions:** Folder containing numerous extension functions.
+---
 
-### Generic Network Manager
-Within the project, we developed a general-purpose network manager. This manager stands out with the ability to handle URLSessionDataTask cancellation operations.
+### Key Components
 
-### Result Type
-To handle results returned from network operations, we used the Result type to make the code more reliable and readable.
+#### Generic Network Manager
+- Developed a general-purpose network manager capable of handling API requests.
+- Supports **URLSessionDataTask cancellation**, ensuring robust and efficient networking.
 
-### Model Creation and JSON Transformation
-In the project, we examined the transformation from JSON to Struct using the Codable protocol. Additionally, we established the connection between JSON keys and model properties using the CodingKey protocol.
+#### Result Type
+- Utilized Swift's **Result** type to handle success and failure cases in network operations.
+- Improves code reliability and readability by managing errors effectively.
 
-### 100% Programmatic 
-UI elements were entirely created programmatically. Custom cells and views were used for customizations.
+#### JSON Transformation
+- Leveraged the **Codable** protocol for transforming JSON data into Swift structs.
+- Used the **CodingKey** protocol for mapping JSON keys to struct properties.
 
-### MVVM and Communication
-Using the MVVM architecture, we facilitated communication between the view model and the view. We explained the use of weak self with examples and touched upon the topics of retain cycles.
+#### 100% Programmatic UI
+- All UI elements were created programmatically.
+- Customized views and cells were implemented for a dynamic and reusable user interface.
 
-### UICollectionView and Pagination
-We utilized UICollectionView to create collections displaying data. Pagination was implemented when fetching data.
+#### MVVM Architecture
+- Employed the MVVM pattern to separate concerns and improve testability.
+- Ensured communication between the **ViewModel** and the **View** using binding and closures.
+- Addressed potential retain cycles with proper usage of `weak self`.
 
-### Binding and Closure Usage
-We employed the MVVM Binding concept to facilitate communication between the view and view model. We also explored the usage of closures and protocol communication.
+#### UICollectionView and Pagination
+- Used **UICollectionView** to create visually appealing collections for displaying movie data.
+- Implemented **pagination** to fetch data in a seamless and efficient manner.
 
-The actions taken in this project serve as a valuable resource to understand fundamental concepts of Swift and MVVM architecture. After reviewing the project, you can find more information in the code files and documentation.
+#### Binding and Closure Usage
+- Adopted **MVVM Binding** to link the view with the view model dynamically.
+- Demonstrated the use of closures and protocol-based communication for flexible and modular design.
+
+---
+
+## Technologies Used
+
+- **Swift**: Programming language.
+- **MVVM Architecture**: Ensures separation of concerns and better maintainability.
+- **URLSession**: For network requests.
+- **UICollectionView**: For creating dynamic and scrollable layouts.
+- **Result Type**: For error handling and result management.
+- **Codable Protocol**: For JSON parsing and model creation.
+
+---
 
 ## :movie_camera: Screen Recording
 https://github.com/ahmettunahanbekdas/Movies/assets/97003033/03582ed4-a774-4074-9464-00c7305a4241
